@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slice & Sip | Artisanal Wood-Fired Pizza</title>
+
+  <!-- Tailwind for the code.html sections -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Fonts: Outfit + Inter for scroll section | Bodoni Moda + Hanken Grotesk for content sections -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind config for code.html design system -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ffb4ab",
+            "tertiary": "#ffbfb7",
+            "secondary-container": "#ee9800",
+            "on-secondary-container": "#5b3800",
+            "surface-container-highest": "#38342b",
+            "on-secondary-fixed": "#2a1700",
+            "on-primary-fixed-variant": "#574500",
+            "on-primary-container": "#554300",
+            "primary-container": "#d4af37",
+            "on-tertiary-container": "#90000a",
+            "tertiary-fixed-dim": "#ffb4ab",
+            "tertiary-container": "#ff968b",
+            "on-primary-fixed": "#241a00",
+            "on-background": "#eae1d4",
+            "primary-fixed": "#ffe088",
+            "outline": "#99907c",
+            "primary": "#f2ca50",
+            "surface-dim": "#16130b",
+            "on-tertiary-fixed-variant": "#93000b",
+            "surface-container-high": "#2d2a21",
+            "on-tertiary-fixed": "#410002",
+            "primary-fixed-dim": "#e9c349",
+            "secondary-fixed-dim": "#ffb95f",
+            "on-secondary-fixed-variant": "#653e00",
+            "background": "#16130b",
+            "on-primary": "#3c2f00",
+            "surface-tint": "#e9c349",
+            "inverse-surface": "#eae1d4",
+            "surface-variant": "#38342b",
+            "secondary": "#ffb95f",
+            "outline-variant": "#4d4635",
+            "tertiary-fixed": "#ffdad6",
+            "surface-container": "#231f17",
+            "inverse-on-surface": "#343027",
+            "on-surface": "#eae1d4",
+            "on-error": "#690005",
+            "secondary-fixed": "#ffddb8",
+            "error-container": "#93000a",
+            "on-secondary": "#472a00",
+            "surface-container-low": "#1f1b13",
+            "inverse-primary": "#735c00",
+            "surface-bright": "#3d392f",
+            "surface": "#16130b",
+            "on-surface-variant": "#d0c5af",
+            "on-tertiary": "#690005",
+            "on-error-container": "#ffdad6",
+            "surface-container-lowest": "#110e07"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "unit": "8px",
+            "section-gap": "120px",
+            "margin-desktop": "64px",
+            "margin-mobile": "16px",
+            "container-max": "1280px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "body-md":             ["Hanken Grotesk"],
+            "display-lg":          ["Bodoni Moda"],
+            "headline-lg-mobile":  ["Bodoni Moda"],
+            "headline-lg":         ["Bodoni Moda"],
+            "display-md":          ["Bodoni Moda"],
+            "label-lg":            ["Hanken Grotesk"],
+            "label-md":            ["Hanken Grotesk"],
+            "body-lg":             ["Hanken Grotesk"],
+            "headline-md":         ["Bodoni Moda"]
+          },
+          "fontSize": {
+            "body-md":            ["16px", { "lineHeight": "1.6",  "fontWeight": "400" }],
+            "display-lg":         ["72px", { "lineHeight": "1.1",  "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "1.2",  "fontWeight": "500" }],
+            "headline-lg":        ["40px", { "lineHeight": "1.2",  "fontWeight": "500" }],
+            "display-md":         ["56px", { "lineHeight": "1.1",  "fontWeight": "600" }],
+            "label-lg":           ["14px", { "lineHeight": "1.2",  "letterSpacing": "0.1em",  "fontWeight": "600" }],
+            "label-md":           ["12px", { "lineHeight": "1.2",  "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "body-lg":            ["18px", { "lineHeight": "1.6",  "fontWeight": "400" }],
+            "headline-md":        ["28px", { "lineHeight": "1.3",  "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Design System ── */
+    :root {
+      --bg-dark: #070708;
+      --bg-card: rgba(13, 13, 15, 0.7);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --color-accent: #f97316;
+      --color-accent-hover: #ea580c;
+      --color-gold: #fbbf24;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      --transition-fast: all 0.2s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-dark);
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+    /* ── Typography (scroll section) ── */
+    h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    p { font-size: 1.125rem; line-height: 1.7; color: var(--text-secondary); font-weight: 300; }
+
+    /* ── Preloader ── */
+    #preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #0a0a0b; display: flex; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+    }
+    #preloader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-content { text-align: center; width: 90%; max-width: 400px; }
+    .logo-container { font-family: var(--font-heading); font-size: 3rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: 0.1em; }
+    .logo-slice { color: var(--text-primary); }
+    .logo-amp { color: var(--color-accent); margin: 0 0.2rem; }
+    .logo-sip { color: var(--color-gold); }
+    .loader-track { width: 100%; height: 4px; background: #1f1f23; border-radius: 2px; overflow: hidden; margin-bottom: 1rem; }
+    #loader-progress { width: 0%; height: 100%; background: linear-gradient(90deg, var(--color-accent), var(--color-gold)); border-radius: 2px; transition: width 0.1s ease; }
+    #loader-text { font-size: 0.875rem; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+    .animate-pulse { animation: pulse 2s infinite ease-in-out; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.98); } }
+
+    /* ── Transparent Nav ── */
+    #site-nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1.25rem 2rem;
+      transition: var(--transition-smooth);
+      /* Starts fully transparent */
+    }
+    #site-nav.scrolled {
+      background: rgba(7, 7, 8, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 0.85rem 2rem;
+    }
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.45rem; font-weight: 700; letter-spacing: 0.04em;
+      background: linear-gradient(90deg, #f3f4f6 30%, #f97316 65%, #fbbf24 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      color: rgba(243,244,246,0.75); text-decoration: none;
+      font-family: 'Hanken Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.03em; transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: #f2ca50; }
+    .nav-cta {
+      background: linear-gradient(135deg, #f97316, #ea580c) !important;
+      color: #fff !important;
+      padding: 0.6rem 1.4rem; border-radius: 9999px;
+      font-weight: 600 !important; font-size: 0.875rem !important;
+      box-shadow: 0 4px 14px rgba(249,115,22,0.3);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-2px) !important; box-shadow: 0 6px 20px rgba(249,115,22,0.45) !important; }
+
+    /* ── Scroll Container ── */
+    .scroll-container { position: relative; width: 100%; }
+
+    /* ── Canvas ── */
+    .canvas-wrapper {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 1; pointer-events: none; overflow: hidden; background-color: var(--bg-dark);
+    }
+    #animation-canvas { width: 100%; height: 100%; display: block; will-change: transform; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+    .canvas-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, rgba(10,10,11,0.1) 0%, rgba(10,10,11,0.65) 80%);
+      pointer-events: none;
+    }
+
+    /* ── Hero Text Overlay (Slice & Sip / Made to Savor) ── */
+    /*
+      z-index: 2 — sits ABOVE canvas (z:1) but BELOW slide-cards (z:5).
+      So the hero text is visible on the first frame but slide-cards appear
+      in front of it once they activate. Hero fades out at 20% scroll anyway
+      so there's no overlap in practice.
+    */
+    #hero-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+      z-index: 2; pointer-events: none;
+      display: flex; flex-direction: column;
+      text-align: right;
+      align-items: flex-end;
+      justify-content: center;
+      padding-right: 8vw;
+      transition: opacity 0.6s ease;
+    }
+    #hero-title {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(3rem, 7vw, 7rem);
+      font-weight: 700; font-style: italic;
+      color: #f3f4f6;
+      letter-spacing: -0.01em;
+      line-height: 1.0;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.8);
+      margin-bottom: 0.75rem;
+    }
+    #hero-title span { color: #f2ca50; }
+    #hero-subtitle {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: clamp(0.85rem, 1.8vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(210, 200, 180, 0.85);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    #hero-overlay.faded { opacity: 0; pointer-events: none; }
+
+    /* Mobile: centre the hero text, smaller size */
+    @media (max-width: 768px) {
+      #hero-overlay {
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        padding-right: 0;
+        padding-top: 22vh;
+      }
+      #hero-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+    }
+
+    /* ── Scroll Indicator ── */
+    .scroll-indicator {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 10; display: flex; flex-direction: column; align-items: center;
+      gap: 0.5rem; opacity: 1; transition: opacity 0.5s ease; pointer-events: none;
+    }
+    .scroll-indicator.fade-out { opacity: 0; }
+    .mouse-icon { width: 24px; height: 40px; border: 2px solid var(--text-secondary); border-radius: 12px; position: relative; }
+    .wheel {
+      width: 4px; height: 8px; background-color: var(--color-accent); border-radius: 2px;
+      position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+      animation: scroll-wheel 1.6s infinite ease-in-out;
+    }
+    @keyframes scroll-wheel { 0% { transform: translate(-50%,0); opacity:0; } 30% { opacity:1; } 100% { transform: translate(-50%,14px); opacity:0; } }
+    .indicator-text { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); font-weight: 500; }
+
+    /* ── Sticky Sections ── */
+    .sticky-section-wrapper { position: relative; height: 100vh; }
+    .scroll-section { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; padding: 0 8vw; z-index: 5; pointer-events: none; }
+    .slide-card {
+      pointer-events: auto;
+      max-width: 540px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 24px; padding: 3rem;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transform: translateY(40px); opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.25,1,0.5,1), opacity 0.8s ease;
+      will-change: transform, opacity;
+    }
+    .left-align  { margin-right: auto; }
+    .right-align { margin-left: auto; }
+    .center-align { margin: 0 auto; text-align: center; }
+    .scroll-section.active .slide-card { transform: translateY(0); opacity: 1; }
+    .badge {
+      display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);
+      background: rgba(249,115,22,0.1); padding: 0.35rem 0.85rem; border-radius: 9999px;
+      margin-bottom: 1.5rem; border: 1px solid rgba(249,115,22,0.2);
+    }
+    .slide-card h1 { font-size: 3rem; margin-bottom: 1.25rem; color: var(--text-primary); }
+    .slide-card p { margin-bottom: 1.5rem; }
+    .cta-group { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+
+    /* ── Buttons (scroll section) ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: var(--transition-fast); cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover)); color: #fff; box-shadow: 0 4px 14px rgba(249,115,22,0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: var(--text-primary); border: 1px solid var(--border-light); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+    .btn-large { padding: 1rem 2.25rem; font-size: 1rem; }
+
+    /* ── Divider between scroll + content ── */
+    #content-sections { position: relative; z-index: 10; background: #0A0A0A; }
+
+    /* ── code.html styles ── */
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .glass-form-input {
+      background-color: #121212; border: none;
+      border-bottom: 1px solid #f2ca50; color: #eae1d4;
+    }
+    .glass-form-input:focus { outline: none; border-bottom: 2px solid #ffb95f; box-shadow: none; }
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.5); cursor: pointer; }
+    .input-label-float { transition: all 0.3s ease; }
+    .glass-form-input:focus + .input-label-float,
+    .glass-form-input:not(:placeholder-shown) + .input-label-float { transform: translateY(-1.5rem) scale(0.85); color: #ffb95f; }
+    select option { background-color: #1f1b13; color: #eae1d4; }
+    /* Hide the native browser dropdown arrow so only the custom icon shows */
+    select.glass-form-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      #site-nav { padding: 1rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .scroll-section { padding: 0 4vw; justify-content: center; }
+      .slide-card { padding: 2rem; margin: 0 auto; text-align: center; }
+      .slide-card h1 { font-size: 2.25rem; }
+      .cta-group { flex-direction: column; width: 100%; }
+      .btn { width: 100%; }
+      #hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="logo-container animate-pulse">
+        <span class="logo-slice">SLICE</span>
+        <span class="logo-amp">&</span>
+        <span class="logo-sip">SIP</span>
+      </div>
+      <div class="loader-track">
+        <div id="loader-progress"></div>
+      </div>
+      <div id="loader-text">Preparing the oven... 0%</div>
+    </div>
+  </div>
+
+  <!-- ══ Transparent Navigation Bar ══ -->
+  <nav id="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <span style="font-style:normal; margin-right:0.3rem;">🍕</span>Slice & Sip
+      </a>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">Our Story</a>
+        <a href="#locations">Gallery</a>
+        <a href="#order" class="nav-cta">Reserve a Table</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ Hero Title Overlay (fades at 30% scroll) ══ -->
+  <div id="hero-overlay">
+    <div id="hero-title">Slice <span>&</span> Sip</div>
+    <div id="hero-subtitle">Made to Savor</div>
+  </div>
+
+  <!-- ══ Scroll Animation Section ══ -->
+  <main class="scroll-container" id="scroll-container">
+
+    <!-- Sticky HD Canvas -->
+    <div class="canvas-wrapper">
+      <canvas id="animation-canvas"></canvas>
+      <div class="canvas-overlay"></div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div id="scroll-indicator" class="scroll-indicator">
+      <span class="mouse-icon"><span class="wheel"></span></span>
+      <span class="indicator-text">Scroll to Explore</span>
+    </div>
+
+    <!-- Section 1: frames 1–40 -->
+    <div class="sticky-section-wrapper">
+      <section class="scroll-section" id="section-1">
+        <div class="slide-card left-align">
+          <span class="badge">Artisanal Craft</span>
+          <h1>The Art of the Slice</h1>
+          <p>Every masterpiece begins with the perfect canvas. Our slow-fermented, hand-stretched sourdough sits on a rustic stone deck, waiting to embrace the flames.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section 2: frames 50–90 -->
+    <div class="sticky-section-wrapper">
+      <section class="scroll-section" id="section-2">
+        <div class="slide-card right-align">
+          <span class="badge">900°F Wood-Fired</span>
+          <h1>Fired to Perfection</h1>
+          <p>At nine hundred degrees, magic happens. The wood-fired heat blisters the crust, melts the fresh mozzarella, and releases the rich aroma of San Marzano tomatoes.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section 3: frames 100–145 -->
+    <div class="sticky-section-wrapper">
+      <section class="scroll-section" id="section-3">
+        <div class="slide-card left-align">
+          <span class="badge">Gourmet Pull</span>
+          <h1>The Ultimate Stretch</h1>
+          <p>Warm, bubbly, artisanal mozzarella meeting fresh basil leaves. A symphony of textures and flavors in every single bite, fresh out of the coals.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section 4: frames 155–210 -->
+    <div class="sticky-section-wrapper">
+      <section class="scroll-section" id="section-4">
+        <div class="slide-card center-align">
+          <span class="badge">Perfect Pairings</span>
+          <h1>Slice & Sip</h1>
+          <p>Wash down your wood-fired slice with our curated craft beers, local ciders, or house-made botanical sodas. Savor the perfect pairing today.</p>
+          <div class="cta-group">
+            <a href="#order" class="btn btn-large btn-primary">Reserve Now</a>
+            <a href="#menu" class="btn btn-large btn-secondary">View Menu</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════
+       CONTENT SECTIONS (from code.html, no nav/hero)
+       ══════════════════════════════════════════════ -->
+  <div id="content-sections">
+
+    <!-- 1. About Slice & Sip -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#121212]" id="about">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+        <div class="order-2 md:order-1">
+          <video class="w-full h-auto rounded-[0.75rem] object-cover aspect-[3/4] shadow-[0px_20px_40px_rgba(0,0,0,0.5)]" autoplay loop muted playsinline>
+            <source src="https://res.cloudinary.com/dwuvrchyt/video/upload/v1782550780/coffee_h4txp3.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="order-1 md:order-2 flex flex-col justify-center gap-unit">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-4">The Art of Sprezzatura</h2>
+          <p class="font-body-lg text-on-surface-variant mb-6">
+            At Slice &amp; Sip, we embrace the Italian philosophy of sprezzatura—effortless grace. Our culinary creations are born from a deep respect for tradition, yet executed with a modern, nonchalant elegance.
+          </p>
+          <p class="font-body-md text-on-surface-variant">
+            From the wood-fired crust of our artisanal pizzas to the rich crema of our bespoke espresso blends, every detail is considered so you don't have to. Experience the intersection of Milanese minimalism and warm, inviting hospitality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Our Menu -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#0A0A0A]" id="menu">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-2">Our Menu</h2>
+          <p class="font-body-md text-on-surface-variant">Curated selections for the discerning palate.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <!-- Pizza -->
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-6 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-[64px] text-primary">local_pizza</span>
+            </div>
+            <h3 class="font-headline-md text-primary">Wood-Fired Pizza</h3>
+            <ul class="flex flex-col gap-4 flex-grow">
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Margherita</span><span class="font-label-lg text-secondary">₹349</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Pepperoni</span><span class="font-label-lg text-secondary">₹449</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Veggie Supreme</span><span class="font-label-lg text-secondary">₹399</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">BBQ Chicken</span><span class="font-label-lg text-secondary">₹479</span></li>
+            </ul>
+            <button class="mt-auto bg-primary text-[#16130b] font-label-lg py-3 px-6 rounded-full hover:bg-secondary hover:scale-105 transition-all duration-300 w-full">Order Now</button>
+          </div>
+          <!-- Coffee -->
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-6 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-[64px] text-primary">local_cafe</span>
+            </div>
+            <h3 class="font-headline-md text-primary">Artisanal Coffee</h3>
+            <ul class="flex flex-col gap-4 flex-grow">
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Cappuccino</span><span class="font-label-lg text-secondary">₹179</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Espresso</span><span class="font-label-lg text-secondary">₹99</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Latte</span><span class="font-label-lg text-secondary">₹169</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Cold Coffee</span><span class="font-label-lg text-secondary">₹189</span></li>
+            </ul>
+            <button class="mt-auto bg-primary text-[#16130b] font-label-lg py-3 px-6 rounded-full hover:bg-secondary hover:scale-105 transition-all duration-300 w-full">Order Now</button>
+          </div>
+          <!-- Bites & Sides -->
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-6 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-[64px] text-primary">lunch_dining</span>
+            </div>
+            <h3 class="font-headline-md text-primary">Bites &amp; Sides</h3>
+            <ul class="flex flex-col gap-4 flex-grow">
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Truffle Burger</span><span class="font-label-lg text-secondary">₹379</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Truffle Fries</span><span class="font-label-lg text-secondary">₹199</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Garlic Bread</span><span class="font-label-lg text-secondary">₹149</span></li>
+              <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Pasta Carbonara</span><span class="font-label-lg text-secondary">₹349</span></li>
+            </ul>
+            <button class="mt-auto bg-primary text-[#16130b] font-label-lg py-3 px-6 rounded-full hover:bg-secondary hover:scale-105 transition-all duration-300 w-full">Order Now</button>
+          </div>
+          <!-- Sweet Endings — full row -->
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-6 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 md:col-span-2 lg:col-span-3">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <span class="material-symbols-outlined text-[64px] text-primary">icecream</span>
+            </div>
+            <h3 class="font-headline-md text-primary">Sweet Endings</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <ul class="flex flex-col gap-4">
+                <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Tiramisu</span><span class="font-label-lg text-secondary">₹249</span></li>
+                <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Cannoli</span><span class="font-label-lg text-secondary">₹199</span></li>
+              </ul>
+              <ul class="flex flex-col gap-4">
+                <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Vanilla Bean Shake</span><span class="font-label-lg text-secondary">₹179</span></li>
+                <li class="flex justify-between items-baseline border-b border-white/5 pb-2"><span class="font-label-lg text-on-surface">Double Chocolate Shake</span><span class="font-label-lg text-secondary">₹199</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Chef's Special -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#1A0F0A]">
+      <div class="max-w-container-max mx-auto relative rounded-3xl overflow-hidden shadow-[0px_20px_40px_rgba(0,0,0,0.5)]">
+        <div class="absolute inset-0 w-full h-full">
+          <div class="w-full h-full bg-cover bg-center opacity-40" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAR3cphf4EQp-UwnLS-Oagb9n7gwb89Oy2a6vq2Z0PvvKBd3T7BhfCtv6xvvchDusTPGiUvmuxJ9oZjHzXja8P7PMPEInRFkxFRM4V3S_ALRjaXnJOF8xa4LC9Y0yis3oCJMRnXmUXAhcGLPDxwDBfuAbkI1f3BOm4k1AF5x-5YtSTVisEnx78Cw9dktkrg8dYQMEc4vFn-FK06hhgIKXd_0wOsQlpoPeipeeAkwB2NU58sc6dKjypp')"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent"></div>
+        </div>
+        <div class="relative z-10 p-8 md:p-16 flex flex-col justify-end min-h-[500px]">
+          <div class="max-w-xl">
+            <span class="inline-block px-3 py-1 bg-surface-tint/20 text-primary font-label-md uppercase tracking-widest rounded-full mb-4 border border-primary/30">Chef's Signature</span>
+            <h2 class="font-display-md text-on-surface mb-4">Truffle Burrata <br/>Wood-Fired Pizza</h2>
+            <p class="font-body-lg text-on-surface-variant mb-8">
+              Experience our masterpiece. Freshly made dough, imported Italian burrata, shaved black truffles, and a drizzle of organic truffle oil, baked to perfection in our custom wood-fired oven.
+            </p>
+            <button class="bg-primary text-[#16130b] font-label-lg py-4 px-8 rounded-full hover:bg-secondary hover:scale-105 transition-all duration-300 shadow-lg">Reserve a Slice</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Why Choose Slice & Sip -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#0A0A0A]">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-2">The Slice &amp; Sip Difference</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-gutter gap-y-12">
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">eco</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Fresh Ingredients</h4>
+          </div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">local_fire_department</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Wood-Fired</h4>
+          </div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">coffee_maker</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Premium Coffee</h4>
+          </div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">bolt</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Fast Service</h4>
+          </div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">chair</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Cozy Atmosphere</h4>
+          </div>
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary bg-primary/5">
+              <span class="material-symbols-outlined text-[32px] font-light" style="font-variation-settings: 'wght' 200;">wifi</span>
+            </div>
+            <h4 class="font-label-lg text-on-surface">Free Wi-Fi</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Customer Reviews -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#121212]">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-2">Voices of Sprezzatura</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-4">
+            <div class="flex text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant italic flex-grow">"We came here after a long drive and honestly did not expect much — but this place completely blew us away. The wood-fired crust has this smoky char that you just cannot get anywhere else in the city. Came back the very next weekend."</p>
+            <div class="mt-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-md">AK</div>
+              <span class="font-label-lg text-on-surface">Ananya K.</span>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-4">
+            <div class="flex text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant italic flex-grow">"Came here for a friend's birthday dinner and the whole experience was spot on. The truffle pizza is rich but balanced — not too heavy. The vibe is perfect for an evening out, dark and intimate without being pretentious."</p>
+            <div class="mt-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-md">RV</div>
+              <span class="font-label-lg text-on-surface">Rohan V.</span>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 flex flex-col gap-4">
+            <div class="flex text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-outline">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant italic flex-grow">"Honestly the best cold brew I have had in a long time, and the pizza lived up to the hype too. Perfect for a lazy Sunday afternoon with friends. The interiors are gorgeous — very moody and well thought out."</p>
+            <div class="mt-4 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-md">SM</div>
+              <span class="font-label-lg text-on-surface">Shreya M.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Gallery -->
+    <section class="py-[2px] bg-[#0A0A0A]" id="locations">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[2px]">
+        <img class="w-full h-64 md:h-80 object-cover hover:opacity-80 transition-opacity cursor-pointer" alt="Artisanal pizza with melted cheese and fresh basil on a rustic wooden table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_xNFtyYIJlGRlV141u0TbYBoELt0y-yZb3-ESSwx0icYTcNk-rIpGcRQgq_IoCXlfOLOyhK5ke5umaWDqiHue-3wvt4YsM0QqJikDKTPaR2a-2TC8DmgQqodhYQpgyrubj2q_UZpGF0KaZkVb9Tq2l7n9BHXLqNHQAOc6pHz0-ORt0DH6xAgc5xEgjiQfmwjB217uDLeZQNvHzBttYhO57Z65bHDS-bG9J8eSVDCyJa-KYR4aakH2wQHVixAuyPq4WQ"/>
+        <img class="w-full h-64 md:h-80 object-cover hover:opacity-80 transition-opacity cursor-pointer" alt="A dramatic espresso splash with flying coffee beans against a dark cafe background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy0rqPEnCKV5M0O5eTpqT7wQfIJZUqH6x6Gg13ZNVpQFM9lQ_hATsQRXWS0HzUGGiT6eDwiH_c0WGQFYa_6JmP37oDirbvMSVU7y9cfct7Nt9G5mP1tOb_JpkZaDthsS9TOJ29qsr9ltsiZ6VZ5t1oYJCQEMxr2nwaccP96uigxfGGTO9oHyWOuXLNdZbNN0Nd1Fqqt61Ub9OuYe8PBnM11CfVy31AyzX-0IPSQsIo77qDhMW-XImnRPUPBDL7Ul-RkA"/>
+        <img class="w-full h-64 md:h-80 object-cover hover:opacity-80 transition-opacity cursor-pointer" alt="Interior of a high-end cafe with dark walls, marble bar, and warm amber pendant lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf2aKerbl24r1cynWEoBsvBkLR0Xb2e54i1GynE3DEnJzbC3rzjLD6mxzqsH-UBbC8VY1uilYQ9ZS3sa4lLPNWxO18mC2s6ehA_CoJRGeumeq-FUU26RHKau7BwkYDTDpKKxuGiVgTwG5orVhE92Q2v_9pY5NqrQppgmKedyBOraIydNQN5uMs9YGCpCNTvM4DZLSiUyYJ_ipDNWgIjvvA7DR5IAEIK-9N26pusLMVt2IPSFFGQUfx"/>
+        <img class="w-full h-64 md:h-80 object-cover hover:opacity-80 transition-opacity cursor-pointer" alt="Close-up of a plated tiramisu dusted with cocoa powder, with a gold spoon, under warm directional light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAWi6bRN4l0yZSn93F8xagz8eIFpDUdhyOzKl56JS2fQfKOmWqnXKtndIrLZDib_yMS3Kyzh4Ns_Z1kuH97ppyRJoCyEXSVBrQwYBG4d5-97Zx6orJ5LhN6Maye9W3anHwMDAIjpWFQ0aha4tM_hp2bdrj28jc4tf1I7zMZeKxS6qU-nar4W2WFgKNHy_ZwEr1z1choQWYrZScab5qSSrLR_NYu3Em9unpNEsdEH3E1qT-HBSjXjm9">
+      </div>
+    </section>
+
+    <!-- 7. Reserve a Table -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#16130b]" id="order">
+      <div class="max-w-[800px] mx-auto glass-card rounded-[1.5rem] p-8 md:p-12 shadow-[0px_20px_40px_rgba(0,0,0,0.5)]">
+        <div class="text-center mb-10">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-2">Reserve a Table</h2>
+          <p class="font-body-md text-on-surface-variant">Secure your spot in our dimly lit sanctuary.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="relative pt-6">
+            <input class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 peer" id="name" placeholder=" " type="text"/>
+            <label class="input-label-float absolute left-0 top-8 font-label-md text-on-surface-variant pointer-events-none origin-left" for="name">Full Name</label>
+          </div>
+          <div class="relative pt-6">
+            <input class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 peer" id="email" placeholder=" " type="email"/>
+            <label class="input-label-float absolute left-0 top-8 font-label-md text-on-surface-variant pointer-events-none origin-left" for="email">Email Address</label>
+          </div>
+          <div class="relative pt-6">
+            <input class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 peer" id="phone" placeholder=" " type="tel"/>
+            <label class="input-label-float absolute left-0 top-8 font-label-md text-on-surface-variant pointer-events-none origin-left" for="phone">Phone Number</label>
+          </div>
+          <div class="relative pt-6">
+            <select class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 appearance-none bg-transparent" id="guests">
+              <option disabled hidden selected value=""></option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5+">5+ Guests (Call Us)</option>
+            </select>
+            <label class="input-label-float absolute left-0 top-2 font-label-md text-[#ffb95f] scale-[0.85] origin-left" for="guests">Number of Guests</label>
+            <div class="absolute right-0 top-8 pointer-events-none text-primary">
+              <span class="material-symbols-outlined">expand_more</span>
+            </div>
+          </div>
+          <div class="relative pt-6">
+            <input class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 peer text-on-surface-variant" id="date" placeholder=" " type="date"/>
+            <label class="input-label-float absolute left-0 top-2 font-label-md text-[#ffb95f] scale-[0.85] origin-left" for="date">Date</label>
+          </div>
+          <div class="relative pt-6">
+            <input class="glass-form-input w-full py-2 px-0 font-body-md focus:ring-0 peer text-on-surface-variant" id="time" placeholder=" " type="time"/>
+            <label class="input-label-float absolute left-0 top-2 font-label-md text-[#ffb95f] scale-[0.85] origin-left" for="time">Time</label>
+          </div>
+          <div class="md:col-span-2 mt-6">
+            <button class="w-full bg-primary text-[#16130b] font-label-lg py-4 rounded-full hover:bg-secondary hover:scale-[1.02] transition-all duration-300" onclick="handleReservation(event)" type="button">
+              Confirm Reservation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact -->
+    <section class="px-margin-mobile py-[60px] md:px-margin-desktop md:py-section-gap bg-[#0A0A0A]">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-stretch">
+        <div class="bg-[#121212] p-8 md:p-12 rounded-[1.5rem] flex flex-col justify-center gap-8 border border-white/5">
+          <div>
+            <h3 class="font-headline-md text-primary mb-6">Visit Us</h3>
+            <div class="flex items-start gap-4 mb-4">
+              <span class="material-symbols-outlined text-secondary mt-1">location_on</span>
+              <div>
+                <p class="font-label-lg text-on-surface">21 Café Street</p>
+                <p class="font-body-md text-on-surface-variant">Food District</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 mb-4">
+              <span class="material-symbols-outlined text-secondary mt-1">phone</span>
+              <p class="font-body-md text-on-surface-variant">+91...Coming Soon</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-secondary mt-1">mail</span>
+              <p class="font-body-md text-on-surface-variant">123@gmail.com</p>
+            </div>
+          </div>
+          <hr class="border-white/10"/>
+          <div>
+            <h3 class="font-headline-md text-primary mb-6">Hours</h3>
+            <ul class="flex flex-col gap-2 font-body-md text-on-surface-variant">
+              <li class="flex justify-between"><span>Mon – Thu</span><span>8:00 AM – 10:00 PM</span></li>
+              <li class="flex justify-between"><span>Fri – Sat</span><span>8:00 AM – 11:30 PM</span></li>
+              <li class="flex justify-between"><span>Sunday</span><span>9:00 AM – 9:00 PM</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="h-64 md:h-auto rounded-[1.5rem] overflow-hidden border border-white/5 relative">
+          <img class="w-full h-full object-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500" alt="Stylized dark-mode map highlighting the restaurant location in New York City." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA38UvdtdJjlaypTEJTe-KVqR8X_lWbSIF3Nmx7npHN5t6vHe38Evb9qTOsyCFyshWEAOZjruAJmIr6FB0FTVTgqvjsoUXWgBVlJJlZ6RBzhI057iTdNM1gPXYJOS6nRcumwr505UKvCLnDm7fgkZZScSvySSw3lOGfskOktXO1EzyplAdXYsFeKMw6AyIX_bmpYN9UVZGIRky_64CXycusVk1gRNX2u36zL0joyquSXR8eW4xz2VjM"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 to-transparent pointer-events-none"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="bg-surface-container-low w-full">
+      <div class="max-w-container-max mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+        <div class="col-span-1 md:col-span-2 flex flex-col gap-4">
+          <span class="font-display-md text-display-md text-primary">Slice &amp; Sip</span>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Crafting moments of effortless grace through exceptional culinary experiences.</p>
+        </div>
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4 class="font-label-lg text-primary mb-2">Explore</h4>
+          <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary inline-flex w-max hover:scale-105 transition-all duration-300" href="#menu">Menu</a>
+          <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary inline-flex w-max hover:scale-105 transition-all duration-300" href="#order">Reservations</a>
+          <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary inline-flex w-max hover:scale-105 transition-all duration-300" href="#">Private Dining</a>
+          <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary inline-flex w-max hover:scale-105 transition-all duration-300" href="#about">Our Story</a>
+          <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary inline-flex w-max hover:scale-105 transition-all duration-300" href="#order">Contact</a>
+        </div>
+        <div class="col-span-1 flex flex-col justify-between gap-6">
+          <div class="flex gap-4">
+            <a class="text-on-surface-variant hover:text-secondary transition-all duration-300 hover:scale-105" href="#" aria-label="Share">
+              <span class="material-symbols-outlined">share</span>
+            </a>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant text-sm">&copy; 2026 Slice &amp; Sip. Crafted with Sprezzatura.</p>
+          <p class="font-body-md text-on-surface-variant text-xs mt-1" style="opacity:0.5; letter-spacing:0.05em;">Made with ♥ by Priyanshi Sahu</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /#content-sections -->
+
+  <script>
+  // ═══════════════════════════════════════════════
+  //  Scroll Animation Controller
+  // ═══════════════════════════════════════════════
+  const TOTAL_FRAMES    = 240;
+  const EASE_SECONDS    = 0.10;
+  const SCROLL_MULTIPLIER = 5;
+
+  const framesArray = [];
+  let loadedCount  = 0;
+  let isLoaded     = false;
+  let currentFrameIndex = 1;
+  let targetFrameIndex  = 1;
+  let lastRenderedFrame = 0;
+  let lastTimestamp     = null;
+
+  // How much of the scroll section (0–1) before hero text fades
+  const HERO_FADE_AT = 0.20;
+
+  let canvas, ctx;
+  let preloader, progressLine, progressText;
+  let scrollIndicator, navEl;
+  let sections;
+  let heroOverlay;
+  // Total scroll height of just the scroll-animation section
+  let scrollSectionHeight = 0;
+
+  // ── HD Image Preloader ──
+  function preloadImages() {
+    return new Promise((resolve) => {
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.decoding = 'async';
+        const frameNum = String(i).padStart(3, '0');
+        img.src = `frames/ezgif-frame-${frameNum}.jpg`;
+
+        const onSettled = () => {
+          loadedCount++;
+          const pct = Math.min(100, Math.floor((loadedCount / TOTAL_FRAMES) * 100));
+          progressLine.style.width = `${pct}%`;
+          progressText.textContent  = `Stoking the flames… ${pct}%`;
+          if (loadedCount === TOTAL_FRAMES) onAllImagesLoaded(resolve);
+        };
+        img.onload  = onSettled;
+        img.onerror = () => { console.warn(`Failed: frames/ezgif-frame-${frameNum}.jpg`); onSettled(); };
+        framesArray.push(img);
+      }
+    });
+  }
+
+  function onAllImagesLoaded(resolve) {
+    isLoaded = true;
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      document.body.style.overflowY = 'auto';
+      resolve();
+    }, 600);
+  }
+
+  // ── HD Canvas Draw (object-fit: cover, full DPR) ──
+  function drawFrameCover(img) {
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    const cw = canvas.width, ch = canvas.height;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    const canvasRatio = cw / ch, imgRatio = iw / ih;
+    let sx = 0, sy = 0, sw = iw, sh = ih;
+    if (canvasRatio > imgRatio) { sh = iw / canvasRatio; sy = (ih - sh) / 2; }
+    else                        { sw = ih * canvasRatio;  sx = (iw - sw) / 2; }
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
+  }
+
+  // ── Canvas Resize ──
+  let resizeTimer = null;
+  function resizeCanvas() { clearTimeout(resizeTimer); resizeTimer = setTimeout(_doResize, 80); }
+  function _doResize() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    if (isLoaded) {
+      const idx = Math.round(currentFrameIndex) - 1;
+      drawFrameCover(framesArray[Math.max(0, idx)]);
+    }
+  }
+
+  // ── Scroll → frame mapping ──
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    // Only the scroll-animation section drives the canvas
+    const maxScroll = scrollSectionHeight - window.innerHeight;
+    const clampedScroll = Math.max(0, Math.min(scrollTop, maxScroll));
+    const scrollFraction = maxScroll > 0 ? clampedScroll / maxScroll : 0;
+
+    targetFrameIndex = Math.min(TOTAL_FRAMES, Math.max(1, Math.ceil(scrollFraction * TOTAL_FRAMES)));
+
+    // Nav becomes frosted when scrolled any amount
+    if (scrollTop > 40) navEl.classList.add('scrolled');
+    else                navEl.classList.remove('scrolled');
+
+    // Scroll indicator
+    if (scrollFraction > 0.03) scrollIndicator.classList.add('fade-out');
+    else                       scrollIndicator.classList.remove('fade-out');
+
+    // Hero text fade — disappears at 30% of scroll-animation section
+    if (scrollFraction >= HERO_FADE_AT) heroOverlay.classList.add('faded');
+    else                                heroOverlay.classList.remove('faded');
+  }
+
+  // ── Section activation ──
+  const SECTION_RANGES = [
+    { start:   1, end:  40 },   // section-1: Art of the Slice
+    { start:  50, end:  90 },   // section-2: Fired to Perfection
+    { start: 100, end: 145 },   // section-3: The Ultimate Stretch
+    { start: 155, end: 210 },   // section-4: Slice & Sip CTA
+  ];
+  function updateTextOverlays(easedFrame) {
+    sections.forEach((section, i) => {
+      const range = SECTION_RANGES[i];
+      if (!range) return;
+      section.classList.toggle('active', easedFrame >= range.start && easedFrame <= range.end);
+    });
+  }
+
+  // ── Animation loop ──
+  function animationLoop(timestamp) {
+    const dt = lastTimestamp !== null ? Math.min((timestamp - lastTimestamp) / 1000, 0.1) : 0;
+    lastTimestamp = timestamp;
+    const alpha = 1 - Math.pow(1 - Math.min(1, dt / EASE_SECONDS), 1);
+    const frameDiff = targetFrameIndex - currentFrameIndex;
+    if (Math.abs(frameDiff) < 0.05) currentFrameIndex = targetFrameIndex;
+    else                             currentFrameIndex += frameDiff * alpha;
+
+    const roundedFrame = Math.round(currentFrameIndex);
+    if (roundedFrame !== lastRenderedFrame) {
+      const img = framesArray[roundedFrame - 1];
+      if (img && img.complete) { drawFrameCover(img); lastRenderedFrame = roundedFrame; }
+    }
+    updateTextOverlays(currentFrameIndex);
+    requestAnimationFrame(animationLoop);
+  }
+
+  // ── Init ──
+  async function init() {
+    canvas         = document.getElementById('animation-canvas');
+    ctx            = canvas.getContext('2d');
+    preloader      = document.getElementById('preloader');
+    progressLine   = document.getElementById('loader-progress');
+    progressText   = document.getElementById('loader-text');
+    scrollIndicator= document.getElementById('scroll-indicator');
+    navEl          = document.getElementById('site-nav');
+    heroOverlay    = document.getElementById('hero-overlay');
+    sections       = document.querySelectorAll('.scroll-section');
+
+    document.body.style.overflowY = 'hidden';
+    _doResize();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+    await preloadImages();
+    drawFrameCover(framesArray[0]);
+
+    // Set body height: scroll section = SCROLL_MULTIPLIER * 100vh, content sections are natural
+    const scrollSectionVh = SCROLL_MULTIPLIER * window.innerHeight;
+    scrollSectionHeight = scrollSectionVh;
+    // We don't set body height manually — the scroll container + content sections handle it
+    // But we need to tell the scroll container how tall to be
+    document.getElementById('scroll-container').style.height = scrollSectionVh + 'px';
+
+    updateScrollProgress();
+    requestAnimationFrame(animationLoop);
+  }
+
+  // ── Reservation handler ──
+  function handleReservation(e) {
+    const name  = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date  = document.getElementById('date').value;
+    const time  = document.getElementById('time').value;
+    if (!name || !email || !phone || !date || !time) {
+      alert('Please fill in all fields before confirming your reservation.');
+      return;
+    }
+    const btn = e.currentTarget;
+    btn.textContent = '✓ Reservation Confirmed!';
+    btn.disabled = true;
+    btn.classList.add('opacity-80', 'cursor-not-allowed');
+  }
+
+  window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
