@@ -267,7 +267,19 @@
     }
     #hero-overlay.faded { opacity: 0; pointer-events: none; }
 
-    /* Mobile: hero handled in the main responsive block below */
+    /* Mobile: centre the hero text, smaller size */
+    @media (max-width: 768px) {
+      #hero-overlay {
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        padding-right: 0;
+        padding-top: 22vh;
+      }
+      #hero-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+    }
 
     /* ── Scroll Indicator ── */
     .scroll-indicator {
@@ -353,38 +365,12 @@
     @media (max-width: 768px) {
       #site-nav { padding: 1rem; }
       .nav-links a:not(.nav-cta) { display: none; }
-
-      /* Cards: full width, centred, smaller padding */
-      .scroll-section {
-        padding: 0 5vw;
-        justify-content: center;
-        align-items: flex-end;        /* push card to bottom third of screen */
-        padding-bottom: 12vh;
-      }
-      .slide-card {
-        padding: 1.5rem;
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-        border-radius: 18px;
-      }
-      .slide-card h1 { font-size: 1.75rem; margin-bottom: 0.75rem; }
-      .slide-card p  { font-size: 0.9rem; margin-bottom: 0.75rem; }
-      .badge         { font-size: 0.65rem; padding: 0.25rem 0.65rem; margin-bottom: 0.9rem; }
-      .cta-group { flex-direction: column; width: 100%; gap: 0.6rem; }
-      .btn { width: 100%; padding: 0.8rem 1rem; }
-
-      /* Hero title: move to top so it doesn't overlap card */
-      #hero-overlay {
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        padding-right: 0;
-        padding-top: 14vh;
-      }
-      #hero-title    { font-size: clamp(2.2rem, 11vw, 3.5rem); }
-      #hero-subtitle { font-size: 0.7rem; letter-spacing: 0.18em; }
+      .scroll-section { padding: 0 4vw; justify-content: center; }
+      .slide-card { padding: 2rem; margin: 0 auto; text-align: center; }
+      .slide-card h1 { font-size: 2.25rem; }
+      .cta-group { flex-direction: column; width: 100%; }
+      .btn { width: 100%; }
+      #hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
     }
   </style>
 

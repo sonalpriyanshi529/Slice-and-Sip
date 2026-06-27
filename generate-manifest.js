@@ -1,0 +1,149 @@
+/**
+ * Slice & Sip — Cloudinary Frame Manifest Generator
+ *
+ * Fetches all frame URLs from your Cloudinary `frames` folder,
+ * sorts them by filename, and writes frames-manifest.js
+ * which index.html will use instead of hard-coded numbered paths.
+ *
+ * Usage:
+ *   1. Fill in your credentials below (or use env vars)
+ *   2. node generate-manifest.js
+ *   3. A `frames-manifest.js` file will appear in your project folder
+ *   4. Done — open the site and frames will load from Cloudinary
+ *
+ * No npm install needed — uses only Node built-ins (https module).
+ */
+
+const https = require('https');
+const fs    = require('fs');
+const path  = require('path');
+
+// ─── YOUR CLOUDINARY CREDENTIALS ─────────────────────────────────────────────
+// Find these at: https://console.cloudinary.com → Settings → API Keys
+const CLOUD_NAME = process.env.CLOUD_NAME || 'dgrwg82tl';
+const API_KEY    = process.env.API_KEY    || '298392742625215';
+const API_SECRET = process.env.API_SECRET || 'a95lqn5E8ETAVrspvSptl34ALDM';
+// The folder name exactly as it appears in Cloudinary Media Library
+// const FOLDER     = process.env.FOLDER     || 'frames';
+const FOLDER = process.env.FOLDER || '';
+// ─────────────────────────────────────────────────────────────────────────────
+
+if (
+  CLOUD_NAME === 'YOUR_CLOUD_NAME' ||
+  API_KEY    === 'YOUR_API_KEY'    ||
+  API_SECRET === 'YOUR_API_SECRET'
+) {
+  console.error(`
+  ✋  Please fill in your Cloudinary credentials before running.
+
+  Either edit generate-manifest.js directly, or run with env vars:
+    CLOUD_NAME=dgrwg82tl API_KEY=123456 API_SECRET=abc123 node generate-manifest.js
+  `);
+  process.exit(1);
+}
+
+// Cloudinary Admin API — list resources in a folder (max 500 per page)
+function fetchPage(nextCursor) {
+  return new Promise((resolve, reject) => {
+
+
+    const params = new URLSearchParams({
+      type:        'upload',
+      max_results:  500,
+      ...(nextCursor ? { next_cursor: nextCursor } : {}),
+    });
+
+    const auth   = Buffer.from(`${API_KEY}:${API_SECRET}`).toString('base64');
+    const url    = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?${params}`;
+
+    https.get(url, { headers: { Authorization: `Basic ${auth}` } }, res => {
+      let body = '';
+      res.on('data', chunk => { body += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(body)); }
+        catch (e) { reject(new Error('Invalid JSON from Cloudinary: ' + body)); }
+      });
+    }).on('error', reject);
+  });
+}
+
+async function getAllResources() {
+  const all = [];
+  let cursor;
+
+  process.stdout.write('Fetching frames from Cloudinary');
+  do {
+    const page = await fetchPage(cursor);
+
+    if (page.error) {
+      console.error('\n\nCloudinary API error:', page.error.message);
+      console.error('Check your CLOUD_NAME, API_KEY, and API_SECRET.');
+      process.exit(1);
+    }
+
+    all.push(...(page.resources || []));
+    cursor = page.next_cursor;
+    process.stdout.write('.');
+  } while (cursor);
+
+  console.log(` done.\nFound ${all.length} asset(s) in folder "${FOLDER}".`);
+  return all;
+}
+
+function buildUrl(publicId, format) {
+  // q_auto,f_auto = Cloudinary auto quality + format (serves WebP where supported)
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/q_auto,f_auto/${publicId}.${format}`;
+}
+
+function sortByFilename(resources) {
+  // Sort by the numeric part in the filename — handles the _suffix Cloudinary adds
+  // e.g. "frames/ezgif-frame-239_tvhex1" → extract 239 → sort ascending
+  return [...resources].sort((a, b) => {
+    const numA = parseInt((a.public_id.match(/(\d+)(?:[_\-][^/]*)?$/) || [])[1] || '0', 10);
+    const numB = parseInt((b.public_id.match(/(\d+)(?:[_\-][^/]*)?$/) || [])[1] || '0', 10);
+    return numA - numB;
+  });
+}
+
+async function main() {
+  console.log(`\n🍕  Slice & Sip — Frame Manifest Generator`);
+  console.log(`    Cloud: ${CLOUD_NAME}  |  Folder: ${FOLDER}\n`);
+
+  const resources = await getAllResources();
+
+  if (resources.length === 0) {
+    console.error(`No images found in folder "${FOLDER}". Check the folder name.`);
+    process.exit(1);
+  }
+  const filtered = resources.filter(r => r.public_id.includes('ezgif-frame-'));
+  const sorted = sortByFilename(filtered);
+  // const sorted = sortByFilename(resources);
+
+  // Preview the sort order so you can verify it looks right
+  console.log('\nFirst 5 frames (check order is correct):');
+  sorted.slice(0, 5).forEach((r, i) => console.log(`  [${i + 1}] ${r.public_id}`));
+  console.log('Last 5 frames:');
+  sorted.slice(-5).forEach((r, i) => console.log(`  [${sorted.length - 4 + i}] ${r.public_id}`));
+
+  const urls = sorted.map(r => buildUrl(r.public_id, r.format));
+  console.log(`\n✅  frames-manifest.js written with ${urls.length} URLs.`);
+  // Write frames-manifest.js
+  const outPath = path.join(__dirname, 'frames-manifest.js');
+  const content = `// Auto-generated by generate-manifest.js — do not edit manually.
+// Re-run: node generate-manifest.js
+// Generated: ${new Date().toISOString()}
+// Total frames: ${urls.length}
+
+window.FRAMES_MANIFEST = ${JSON.stringify(urls, null, 2)};
+`;
+
+  fs.writeFileSync(outPath, content, 'utf8');
+  console.log(`\n✅  frames-manifest.js written with ${urls.length} URLs.`);
+  console.log(`    Path: ${outPath}`);
+  console.log('\nNext step: open your site — frames will now load from Cloudinary.\n');
+}
+
+main().catch(err => {
+  console.error('\n❌  Unexpected error:', err.message);
+  process.exit(1);
+});
